@@ -1,4 +1,4 @@
-# zero-kara-SQL
+# zero-kara-SQL+PHP
 SQL 第2版 ゼロからはじめるデータベース操作のハンズオン
 
  psql postgresで起動
@@ -32,3 +32,4 @@ SET character_set_results = cp932;
 ```
 
 これで本と同じ「MariaDB動作確認」が完了🌙
+

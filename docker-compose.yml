@@ -6,6 +6,7 @@ services:
       - "8080:80"          # http://localhost:8080 がWeb
     volumes:
       - ./htdocs:/var/www/html
+      - ./php/conf.d/error-dev.ini:/usr/local/etc/php/conf.d/error-dev.ini
     depends_on:
       - db
     environment:
