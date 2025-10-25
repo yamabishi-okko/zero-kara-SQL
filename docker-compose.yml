@@ -1,0 +1,42 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: xampp_like_web
+    ports:
+      - "8080:80"          # http://localhost:8080 がWeb
+    volumes:
+      - ./htdocs:/var/www/html
+    depends_on:
+      - db
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/html
+    # 必要になったらmod_rewriteなどを有効化するためのコマンドを追加できます
+    # command: [ "bash", "-lc", "docker-php-ext-install mysqli && apache2-foreground" ]
+
+  db:
+    image: mariadb:10.6
+    container_name: xampp_like_db
+    ports:
+      - "3307:3306"        # ローカル3306が他で使用中でも安全
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: xampp_like_phpmyadmin
+    ports:
+      - "8081:80"          # http://localhost:8081 がphpMyAdmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootpass
+    depends_on:
+      - db
+
+volumes:
+  db_data:
