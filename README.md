@@ -33,3 +33,7 @@ SET character_set_results = cp932;
 
 これで本と同じ「MariaDB動作確認」が完了🌙
 
+☁︎テストファイルの確認方法は
+例えば（htdocs/test/make_associative.php）のファイルを確認したい時は
+http://localhost:8080/test/make_associative.php
+にアクセス！！🪼
